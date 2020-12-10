@@ -12,12 +12,12 @@ export const Button = styled.TouchableOpacity.attrs({
   padding-left: 10px;
   padding-right: 10px;
   margin-right: ${({theme}) => theme.normalize(10)}px;
-  margin-left: ${({theme, first}) => (first ? theme.normalize(20) : 0)}px;
-  background-color: ${({theme}) => theme.color.light_light};
+  background-color: ${({theme, active}) =>
+    active ? theme.color.dark_dark : theme.color.light_light};
 `;
 
 export const Text = styled(Montserrat)`
   height: ${({theme}) => theme.normalize(16)}px;
-  color: ${({theme, light}) =>
-    light ? theme.color.dark_subtitle : theme.color.dark_light};
+  color: ${({theme, active}) =>
+    active ? theme.color.light_light : theme.color.dark_light};
 `;

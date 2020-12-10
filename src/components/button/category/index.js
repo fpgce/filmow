@@ -5,7 +5,7 @@ import {Button, Text} from './styles';
 const CategoryButtonComponent = (props) => {
   return (
     <Button {...props}>
-      <Text {...{light: props.light}}>{props.children}</Text>
+      <Text {...{active: props.active}}>{props.children}</Text>
     </Button>
   );
 };
