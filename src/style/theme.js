@@ -1,9 +1,30 @@
 import {Dimensions} from 'react-native';
+import Normalize from './normalizeDevices';
 
 const {width, height} = Dimensions.get('window');
 
+const defaultPropsBetweenThemes = {
+  window: {
+    width,
+    height,
+  },
+  normalize: (px) => Normalize(px),
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 11,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 20,
+
+    elevation: 5,
+  },
+};
+
 export default {
   light: {
+    ...defaultPropsBetweenThemes,
     color: {
       primary_main: '#59D957',
       primary_dark: '#49AF48',
@@ -16,21 +37,6 @@ export default {
       light_dark: '#EBEDF0',
       light_light: '#FAFBFC',
       light_subtitle: '#FFFFFF',
-    },
-    window: {
-      width,
-      height,
-    },
-    shadow: {
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-
-      elevation: 5,
     },
   },
 };
