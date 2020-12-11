@@ -6,7 +6,9 @@ export const Container = styled.View`
   flex: 1;
 `;
 
-export const ContainerBanner = styled.View`
+export const ContainerBanner = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})`
   width: ${({theme}) => theme.window.width * 0.7}px;
   height: ${({theme}) => theme.window.height * 0.5}px;
 `;
@@ -43,6 +45,15 @@ export const BottonLine = styled.View`
   margin-top: ${({theme}) => theme.normalize(10)}px;
   height: ${({theme}) => theme.normalize(4)}px;
   background-color: ${({theme}) => theme.color.primary_main};
+`;
+
+export const ContainerTags = styled.View`
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
 `;
 
 export const HorizontalScroll = styled.ScrollView.attrs({

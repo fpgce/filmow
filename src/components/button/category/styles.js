@@ -14,6 +14,7 @@ export const Button = styled.TouchableOpacity.attrs({
   margin-right: ${({theme}) => theme.normalize(10)}px;
   background-color: ${({theme, active}) =>
     active ? theme.color.dark_dark : theme.color.light_light};
+  margin: 5px;
 `;
 
 export const Text = styled(Montserrat)`

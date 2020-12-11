@@ -5,7 +5,7 @@ import SearchIcon from '~/assets/svgIcon/search';
 import {useTheme} from 'styled-components/native';
 import * as I from './styles';
 
-const InputSearchComponent = ({callbackSearch}) => {
+const InputSearchComponent = (props) => {
   const theme = useTheme();
   const [state, setState] = useState({
     inputText: '',
@@ -16,7 +16,7 @@ const InputSearchComponent = ({callbackSearch}) => {
 
   function updateText(text) {
     setState((s) => ({...s, inputText: text}));
-    callbackSearch(text);
+    props?.callbackSearch(text);
   }
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const InputSearchComponent = ({callbackSearch}) => {
           />
         </I.AbsoluteButton>
         <I.Input
+          {...props}
           placeholder="Digite para pesquisar"
           autoCapitalize="none"
           autoCompleteType="off"

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import {Montserrat} from '~/components/global/text/index';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: 100%;
   background-color: ${({theme}) => theme.color.light_light};
   flex-direction: row;

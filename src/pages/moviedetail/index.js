@@ -8,13 +8,19 @@ import RateMovieComponent from '~/components/rate/movie';
 import ButtonCategory from '~/components/button/category';
 import ArtistItem from '~/components/item/artist';
 
-const MovieDetailScreen = () => {
+import environments from '~/config/environments';
+
+import useMovies from '~/context/movies';
+
+const MovieDetailScreen = ({route}) => {
+  const movie = route?.params?.movie;
+  const {selectedTags} = useMovies();
+
   return (
     <H.Container>
       <H.Banner
         source={{
-          uri:
-            'https://ingresso-a.akamaihd.net/img/cinema/cartaz/22968-cartaz.jpg',
+          uri: `${environments.base_image_path}/w500${movie.poster_path}`,
         }}
       />
       <H.Content>
@@ -23,7 +29,7 @@ const MovieDetailScreen = () => {
         </H.ContainerRate>
         <H.RowHeader>
           <H.View>
-            <H.Title>Power</H.Title>
+            <H.Title>{movie.title}</H.Title>
             <H.Small>{`2020      1h53m`}</H.Small>
           </H.View>
           <H.ButtonSquare>
@@ -31,9 +37,9 @@ const MovieDetailScreen = () => {
           </H.ButtonSquare>
         </H.RowHeader>
         <H.RowCategory>
-          <ButtonCategory>Ação</ButtonCategory>
-          <ButtonCategory>Crime</ButtonCategory>
-          <ButtonCategory>Ficção Científica</ButtonCategory>
+          {selectedTags.map((tag) => (
+            <ButtonCategory key={tag}>{tag}</ButtonCategory>
+          ))}
         </H.RowCategory>
         <H.Subtitle>Sipnose</H.Subtitle>
         <H.Small>

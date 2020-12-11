@@ -9,8 +9,7 @@ export const ModalContainer = styled(Modal)`
 `;
 
 export const Container = styled.View`
-  flex: 1;
-  padding: 20px;
+  padding: 0px 20px;
 `;
 
 export const Text = styled(Montserrat)`
@@ -18,3 +17,16 @@ export const Text = styled(Montserrat)`
   color: ${({theme}) => theme.color.dark_main};
   margin-bottom: 20px;
 `;
+
+export const Button = styled.TouchableOpacity`
+  align-self: flex-end;
+  padding: 10px;
+`;
+
+export const FlatList = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    padding: 20,
+    paddingBottom: 100,
+  },
+})``;

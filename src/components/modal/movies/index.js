@@ -1,22 +1,87 @@
-import React from 'react';
+import React, {useMemo, useState, useCallback, useEffect} from 'react';
 
 import * as M from './styles';
+
+import SearchIcon from '~/assets/svgIcon/close';
 
 import InputSearchComponent from '~/components/input/search';
 import MovieSmallItemComponent from '~/components/item/moviesmall';
 import SafeArea from '~/components/safe/default';
+import useMovies from '~/context/movies';
+
+import {requestSearchAMovie} from '~/services/api/movies';
+
+import {navigate} from '~/services/navigation/ref';
 
 const ModalMoviesComponent = () => {
+  const {
+    modalSearchOpen,
+    toggleModal,
+    movies,
+    recents,
+    setRecents,
+  } = useMovies();
+
+  const [state, setState] = useState({
+    filter: '',
+    moviesSearched: [],
+  });
+
+  useEffect(() => {
+    if (!modalSearchOpen) {
+      setState({moviesSearched: [], filter: ''});
+    }
+  }, [modalSearchOpen]);
+
+  const handlePressMovie = useCallback(
+    (movie) => {
+      setRecents(movie);
+      toggleModal();
+      navigate({
+        name: 'moviedetail',
+        params: {
+          movie: {...movie},
+        },
+      });
+    },
+    [setRecents, toggleModal],
+  );
+
+  const handleFinishSearchAMovie = useCallback(async () => {
+    try {
+      if (!state.filter) return;
+      const {data} = await requestSearchAMovie(state.filter);
+      setState((st) => ({...st, moviesSearched: data.results}));
+    } catch (error) {}
+  }, [state.filter]);
+
+  const callbackSearch = useCallback((text) => {
+    setState((st) => ({...st, filter: text}));
+  }, []);
+
   return (
-    <M.ModalContainer visible={false}>
+    <M.ModalContainer animationType="fade" visible={modalSearchOpen}>
       <SafeArea>
         <M.Container>
-          <InputSearchComponent callbackSearch={() => {}} />
-          <M.Text>Buscas recentes</M.Text>
-          <MovieSmallItemComponent />
-          <MovieSmallItemComponent />
-          <MovieSmallItemComponent />
+          <M.Button onPress={toggleModal}>
+            <SearchIcon stroke="#000" />
+          </M.Button>
+          <InputSearchComponent
+            autocapitalize="none"
+            callbackSearch={callbackSearch}
+            onEndEditing={handleFinishSearchAMovie}
+          />
         </M.Container>
+        <M.FlatList
+          ListHeaderComponent={
+            state.filter ? null : <M.Text>Buscas recentes</M.Text>
+          }
+          data={state?.moviesSearched?.length ? state?.moviesSearched : recents}
+          keyExtractor={(item, index) => String(index)}
+          renderItem={({item, index}) => (
+            <MovieSmallItemComponent {...{item, onPress: handlePressMovie}} />
+          )}
+        />
       </SafeArea>
     </M.ModalContainer>
   );
