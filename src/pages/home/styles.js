@@ -9,7 +9,6 @@ export const Container = styled.View`
 export const ContainerBanner = styled.View`
   width: ${({theme}) => theme.window.width * 0.7}px;
   height: ${({theme}) => theme.window.height * 0.5}px;
-  margin: 30px;
 `;
 
 export const CardInfo = styled.View`
@@ -37,7 +36,6 @@ export const Button = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
   margin-right: ${({theme}) => theme.normalize(20)}px;
-  margin-left: ${({theme, first}) => (first ? theme.normalize(20) : 0)}px;
 `;
 
 export const BottonLine = styled.View`
@@ -51,6 +49,8 @@ export const HorizontalScroll = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: {
     alignItems: 'center',
+    paddingLeft: 30,
+    paddingRight: 30,
   },
 })`
   max-height: ${({theme}) => theme.normalize(60)}px;
