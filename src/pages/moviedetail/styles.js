@@ -7,7 +7,6 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
-  flex: 1;
   margin-top: -70px;
   padding: 20px;
 `;
@@ -35,6 +34,8 @@ export const HorizontalScroll = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: {
     alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 })`
   max-height: ${({theme}) => theme.normalize(100)}px;

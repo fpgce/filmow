@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import * as H from './styles';
 
@@ -40,13 +40,13 @@ const MovieDetailScreen = () => {
           Um ex-soldado, uma adolescente e um policial varrem New Orleans em
           busca de uma pílula perigosa que desperta superpoderes temporários.
         </H.Small>
-        <H.HorizontalScroll horizontal>
-          <ArtistItem />
-          <ArtistItem />
-          <ArtistItem />
-          <ArtistItem />
-        </H.HorizontalScroll>
       </H.Content>
+      <H.HorizontalScroll horizontal>
+        <ArtistItem />
+        <ArtistItem />
+        <ArtistItem />
+        <ArtistItem />
+      </H.HorizontalScroll>
     </H.Container>
   );
 };

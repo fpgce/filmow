@@ -19,9 +19,12 @@ export const Row = styled.View`
 
 export const Button = styled.TouchableOpacity``;
 
-export const Input = styled(TextInput)`
+export const Input = styled(TextInput).attrs(({theme}) => ({
+  placeholderTextColor: theme.color.dark_subtitle,
+}))`
   width: 100%;
   background-color: ${({theme}) => theme.color.light_light};
+  color: ${({theme}) => theme.color.dark_subtitle};
   height: 50px;
   padding-left: 60px;
   padding-right: 35px;

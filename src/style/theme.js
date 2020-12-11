@@ -25,6 +25,10 @@ const defaultPropsBetweenThemes = {
 export default {
   light: {
     ...defaultPropsBetweenThemes,
+    statusBar: {
+      barStyle: 'dark-content',
+      backgroundColor: '#FAFBFC',
+    },
     color: {
       primary_main: '#59D957',
       primary_dark: '#49AF48',
@@ -37,6 +41,26 @@ export default {
       light_dark: '#EBEDF0',
       light_light: '#FAFBFC',
       light_subtitle: '#FFFFFF',
+    },
+  },
+  dark: {
+    ...defaultPropsBetweenThemes,
+    statusBar: {
+      barStyle: 'light-content',
+      backgroundColor: '#29292B',
+    },
+    color: {
+      primary_main: '#59D957',
+      primary_dark: '#49AF48',
+      primary_light: '#83EB81',
+      dark_main: '#F7F8F9',
+      dark_dark: '#FAFBFC',
+      dark_light: '#F7F8F9',
+      dark_subtitle: '#FFFFFF',
+      light_main: '#29292B',
+      light_dark: '#EBEDF0',
+      light_light: '#202022',
+      light_subtitle: '#A4A6AC',
     },
   },
 };

@@ -5,12 +5,7 @@ import {useTheme} from 'styled-components/native';
 
 const StatusbarComponent = () => {
   const theme = useTheme();
-  return (
-    <StatusBar
-      barStyle="dark-content"
-      backgroundColor={theme.color.light_light}
-    />
-  );
+  return <StatusBar {...theme.statusBar} />;
 };
 
 export default StatusbarComponent;

@@ -1,10 +1,12 @@
 import React, {useState, useRef, useEffect, memo, useCallback} from 'react';
 
-import SearchIcon from '~/assets/svg/search.svg';
-
+// import SearchIcon from '~/assets/svg/search.svg';
+import SearchIcon from '~/assets/svgIcon/search';
+import {useTheme} from 'styled-components/native';
 import * as I from './styles';
 
 const InputSearchComponent = ({callbackSearch}) => {
+  const theme = useTheme();
   const [state, setState] = useState({
     inputText: '',
     enableInput: false,
@@ -27,7 +29,13 @@ const InputSearchComponent = ({callbackSearch}) => {
     <I.Container>
       <I.Row>
         <I.AbsoluteButton style={{left: 0}}>
-          <SearchIcon size={20} width={20} height={20} />
+          <SearchIcon
+            fill="none"
+            stroke={theme.color.dark_dark}
+            size={20}
+            width={20}
+            height={20}
+          />
         </I.AbsoluteButton>
         <I.Input
           placeholder="Digite para pesquisar"
