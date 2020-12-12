@@ -22,6 +22,12 @@ export const View = styled.View`
   align-items: center;
 `;
 
+export const Button = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})`
+  align-items: center;
+`;
+
 export const Small = styled(Montserrat)`
   font-size: ${({theme}) => theme.normalize(8)}px;
   font-weight: 600;

@@ -1,9 +1,16 @@
 import styled from 'styled-components/native';
 import {Montserrat} from '~/components/global/text';
 
+export const ScrollView = styled.ScrollView.attrs(({theme}) => ({
+  contentContainerStyle: {
+    minHeight: theme.window.height,
+  },
+}))``;
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({theme}) => theme.color.light_light};
+  padding-bottom: 50px;
 `;
 
 export const Content = styled.View`
@@ -30,15 +37,16 @@ export const View = styled.View`
   justify-content: space-between;
 `;
 
-export const HorizontalScroll = styled.ScrollView.attrs({
+export const HorizontalFlatList = styled.FlatList.attrs({
   showsHorizontalScrollIndicator: false,
+  horizontal: true,
   contentContainerStyle: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingLeft: 20,
     paddingRight: 20,
   },
 })`
-  max-height: ${({theme}) => theme.normalize(100)}px;
+  max-height: 190px;
   margin-top: 20px;
 `;
 

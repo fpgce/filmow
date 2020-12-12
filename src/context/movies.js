@@ -17,7 +17,7 @@ const requestOneOfTypes = [
 async function updateLocalState(get) {
   try {
     const state = get();
-    await setStorageState(state);
+    await setStorageState({context: 'movies', state});
   } catch (err) {
     console.log(`FAIL updateLocalState`, err);
   }
@@ -25,9 +25,15 @@ async function updateLocalState(get) {
 
 async function init(set, get) {
   try {
-    const state = await getStorageState();
+    const state = await getStorageState({context: 'movies'});
     if (state) {
-      set((st) => ({...st, ...state, modalSearchOpen: false}));
+      set((st) => ({
+        ...st,
+        ...state,
+        loading: false,
+        error: false,
+        modalSearchOpen: false,
+      }));
     } else {
       requestMovies(set, get, 0);
     }
@@ -63,6 +69,7 @@ function toggleTagSelected(tag, set, get) {
     set((state) => {
       let tags = [...state.selectedTags];
       const index = state.selectedTags.indexOf(tag);
+      console.log(index);
       if (index < 0) {
         tags.push(tag);
       } else {
@@ -88,7 +95,6 @@ const useMovies = create((set, get) => ({
   movies: [],
   loading: false,
   error: false,
-  tags: ['Ação', 'Comédia', 'Drama', 'Romance', 'Aventura', 'Documentário'],
   selectedTags: [],
   recents: [],
   currentTabIndex: 0,

@@ -2,7 +2,7 @@ import React, {useMemo, useState, useCallback, useEffect} from 'react';
 
 import * as M from './styles';
 
-import SearchIcon from '~/assets/svgIcon/close';
+import CloseIcon from '~/assets/svgIcon/close';
 
 import InputSearchComponent from '~/components/input/search';
 import MovieSmallItemComponent from '~/components/item/moviesmall';
@@ -14,13 +14,7 @@ import {requestSearchAMovie} from '~/services/api/movies';
 import {navigate} from '~/services/navigation/ref';
 
 const ModalMoviesComponent = () => {
-  const {
-    modalSearchOpen,
-    toggleModal,
-    movies,
-    recents,
-    setRecents,
-  } = useMovies();
+  const {modalSearchOpen, toggleModal, recents, setRecents} = useMovies();
 
   const [state, setState] = useState({
     filter: '',
@@ -60,11 +54,14 @@ const ModalMoviesComponent = () => {
   }, []);
 
   return (
-    <M.ModalContainer animationType="fade" visible={modalSearchOpen}>
+    <M.ModalContainer
+      onRequestClose={toggleModal}
+      animationType="fade"
+      visible={modalSearchOpen}>
       <SafeArea>
         <M.Container>
           <M.Button onPress={toggleModal}>
-            <SearchIcon stroke="#000" />
+            <CloseIcon stroke="#000" />
           </M.Button>
           <InputSearchComponent
             autocapitalize="none"

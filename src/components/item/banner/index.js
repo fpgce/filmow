@@ -6,6 +6,8 @@ import environments from '~/config/environments';
 import StarSourceImage from '~/assets/png/star.png';
 import NoImageJpg from '~/assets/png/no_movie.jpg';
 
+import {getOnlyYear} from '~/utils/date';
+
 const BannerItemComponent = ({movie, onPress}) => {
   return (
     <B.ContainerBanner key={movie.id} onPress={() => onPress(movie)}>
@@ -24,9 +26,9 @@ const BannerItemComponent = ({movie, onPress}) => {
           </B.Row>
         </B.Row>
         <B.Row style={{marginTop: 10}}>
-          <B.Small light>1h 53m</B.Small>
-          <B.Circle />
-          <B.Small light>Ação - Crime - Ficção científica</B.Small>
+          <B.Small light>{getOnlyYear(movie.release_date)}</B.Small>
+          {/* <B.Circle /> */}
+          {/* <B.Small light>Ação - Crime - Ficção científica</B.Small> */}
         </B.Row>
       </B.CardInfo>
     </B.ContainerBanner>

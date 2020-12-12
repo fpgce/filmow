@@ -11,6 +11,7 @@ export const Thumb = styled.Image`
   height: 70px;
   border-radius: 70px;
   margin-bottom: 10px;
+  background-color: gray;
 `;
 
 export const Title = styled(Montserrat)`

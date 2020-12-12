@@ -1,6 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ThemeProvider} from 'styled-components';
 import themes from './theme';
+
+import useTheme from '~/context/theme';
+
 export default function ThemeChange({children}) {
-  return <ThemeProvider theme={themes.light}>{children}</ThemeProvider>;
+  const {theme, init} = useTheme();
+
+  useEffect(() => {
+    init();
+  }, [init]);
+
+  return <ThemeProvider theme={themes[theme]}>{children}</ThemeProvider>;
 }

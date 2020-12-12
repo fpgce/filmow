@@ -7,6 +7,7 @@ import {setNavigationRef} from '~/services/navigation/ref';
 
 import home from '~/pages/home';
 import moviedetail from '~/pages/moviedetail';
+import settings from '~/pages/settingsscreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function Navigator() {
         }}>
         <Stack.Screen name="home" component={home} />
         <Stack.Screen name="moviedetail" component={moviedetail} />
+        <Stack.Screen name="settings" component={settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );

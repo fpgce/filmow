@@ -14,6 +14,10 @@ BaseMovies.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
+export function requestMovieDetail({id}) {
+  return BaseMovies.get(`/movie/${id}`);
+}
+
 export function requestPageOfPopularMovies({page}) {
   return BaseMovies.get(`/movie/popular?page=${page}`);
 }

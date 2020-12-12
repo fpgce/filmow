@@ -7,6 +7,7 @@ import ThemeProvider from './style/themeProvider';
 import Statusbar from './components/statusbar/default';
 
 import ModalMoviesComponent from './components/modal/movies';
+import ModalRateComponent from './components/modal/rate';
 
 import LoadingMovieFullscreen from '~/components/loading/movie/fullscreen';
 
@@ -18,6 +19,7 @@ const App = () => {
       <Statusbar />
       <Routes />
       <ModalMoviesComponent />
+      <ModalRateComponent />
       <LoadingMovieFullscreen />
     </ThemeProvider>
   );

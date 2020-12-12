@@ -27,7 +27,7 @@ const TopTabNavigator = () => {
   return (
     <T.HorizontalFlatList
       ref={ScrollRef}
-      onScrollToIndexFailed={console.log}
+      onScrollToIndexFailed={() => {}}
       horizontal
       getItemLayout={(data, index) => ({
         length: data.length,

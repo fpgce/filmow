@@ -38,6 +38,7 @@ export const Button = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
   margin-right: ${({theme}) => theme.normalize(20)}px;
+  margin-bottom: 20px;
 `;
 
 export const BottonLine = styled.View`
@@ -50,7 +51,6 @@ export const BottonLine = styled.View`
 export const ContainerTags = styled.View`
   width: 100%;
   flex-direction: row;
-  flex-wrap: wrap;
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 20px;
@@ -58,17 +58,24 @@ export const ContainerTags = styled.View`
 
 export const HorizontalScroll = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
+  horizontal: true,
   contentContainerStyle: {
     alignItems: 'center',
-    paddingLeft: 30,
-    paddingRight: 30,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 30,
+    paddingTop: 10,
   },
 })`
   max-height: ${({theme}) => theme.normalize(60)}px;
 `;
 
-export const ScrollBanners = styled.ScrollView.attrs({
-  showsHorizontalScrollIndicator: false,
+export const ScrollContainer = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: 100,
+    paddingTop: 20,
+  },
 })``;
 
 export const ButtonCategory = styled.TouchableOpacity.attrs({

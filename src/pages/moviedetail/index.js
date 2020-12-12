@@ -10,50 +10,61 @@ import ArtistItem from '~/components/item/artist';
 
 import environments from '~/config/environments';
 
-import useMovies from '~/context/movies';
+import {requestMovieDetail} from '~/services/api/movies';
+import {getOnlyYear, getFormatedRuntime} from '~/utils/date';
 
 const MovieDetailScreen = ({route}) => {
-  const movie = route?.params?.movie;
-  const {selectedTags} = useMovies();
+  const [movie, setMovie] = useState(route?.params?.movie);
+
+  useEffect(() => {
+    async function requestDetailOfAMovie() {
+      try {
+        const movieId = route?.params?.movie?.id;
+        const {data} = await requestMovieDetail({id: movieId});
+        setMovie((movie) => ({...movie, ...data}));
+      } catch (error) {}
+    }
+    requestDetailOfAMovie();
+  }, [route]);
 
   return (
-    <H.Container>
-      <H.Banner
-        source={{
-          uri: `${environments.base_image_path}/w500${movie.poster_path}`,
-        }}
-      />
-      <H.Content>
-        <H.ContainerRate>
-          <RateMovieComponent />
-        </H.ContainerRate>
-        <H.RowHeader>
-          <H.View>
-            <H.Title>{movie.title}</H.Title>
-            <H.Small>{`2020      1h53m`}</H.Small>
-          </H.View>
-          <H.ButtonSquare>
-            <H.Plus source={PlusSourceImage} />
-          </H.ButtonSquare>
-        </H.RowHeader>
-        <H.RowCategory>
-          {selectedTags.map((tag) => (
-            <ButtonCategory key={tag}>{tag}</ButtonCategory>
-          ))}
-        </H.RowCategory>
-        <H.Subtitle>Sipnose</H.Subtitle>
-        <H.Small>
-          Um ex-soldado, uma adolescente e um policial varrem New Orleans em
-          busca de uma pílula perigosa que desperta superpoderes temporários.
-        </H.Small>
-      </H.Content>
-      <H.HorizontalScroll horizontal>
-        <ArtistItem />
-        <ArtistItem />
-        <ArtistItem />
-        <ArtistItem />
-      </H.HorizontalScroll>
-    </H.Container>
+    <H.ScrollView>
+      <H.Container>
+        <H.Banner
+          source={{
+            uri: `${environments.base_image_path}/w500${movie.backdrop_path}`,
+          }}
+        />
+        <H.Content>
+          <H.ContainerRate>
+            <RateMovieComponent movie={movie} />
+          </H.ContainerRate>
+          <H.RowHeader>
+            <H.View>
+              <H.Title>{movie.title}</H.Title>
+              <H.Small>{`${getOnlyYear(movie?.release_date)}      ${
+                movie.runtime ? getFormatedRuntime(movie.runtime) : ''
+              }`}</H.Small>
+            </H.View>
+            <H.ButtonSquare>
+              <H.Plus source={PlusSourceImage} />
+            </H.ButtonSquare>
+          </H.RowHeader>
+          <H.RowCategory>
+            {movie?.genres?.map((tag) => (
+              <ButtonCategory key={tag.id}>{tag.name}</ButtonCategory>
+            ))}
+          </H.RowCategory>
+          <H.Subtitle>Sipnose</H.Subtitle>
+          <H.Small>{movie.overview}</H.Small>
+        </H.Content>
+        <H.HorizontalFlatList
+          data={movie.production_companies || []}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({item, index}) => <ArtistItem item={item} />}
+        />
+      </H.Container>
+    </H.ScrollView>
   );
 };
 

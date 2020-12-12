@@ -3,17 +3,19 @@ import {View, Image, Text} from 'react-native';
 
 import * as A from './styles';
 
-const ArtiscItemComponent = () => {
+import env from '~/config/environments';
+
+const ArtiscItemComponent = ({item}) => {
+  console.log(item);
   return (
     <A.Container>
       <A.Thumb
         source={{
-          uri:
-            'https://ingresso-a.akamaihd.net/img/cinema/cartaz/22968-cartaz.jpg',
+          uri: `${env.base_image_path}/w200${item.logo_path}`,
         }}
       />
-      <A.Title>Jamie Foxx</A.Title>
-      <A.Small>Art</A.Small>
+      <A.Title>{item.name}</A.Title>
+      <A.Small>{item.origin_country}</A.Small>
     </A.Container>
   );
 };

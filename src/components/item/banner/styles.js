@@ -5,17 +5,17 @@ export const ContainerBanner = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
   width: ${({theme}) => theme.window.width * 0.7}px;
-  height: ${({theme}) => theme.window.height * 0.5}px;
+  min-height: ${({theme}) => theme.window.height * 0.6}px;
 `;
 
 export const BannerImage = styled.Image`
   width: 100%;
-  height: 100%;
+  height: ${({theme}) => theme.window.height * 0.5}px;
   border-radius: 30px;
 `;
 
 export const CardInfo = styled.View`
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 export const Row = styled.View`
@@ -45,5 +45,6 @@ export const Circle = styled.View`
   width: 8px;
   height: 8px;
   border-radius: 8px;
+  margin-left: 10px;
   background-color: ${({theme}) => theme.color.dark_subtitle};
 `;
