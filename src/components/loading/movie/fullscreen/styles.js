@@ -6,7 +6,7 @@ export const Container = styled.View`
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background-color: #fff8;
+  background-color: ${({theme}) => theme.color.background_loading};
   justify-content: center;
   align-items: center;
 `;

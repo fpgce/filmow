@@ -58,6 +58,9 @@ const MovieDetailScreen = ({route}) => {
           <H.Subtitle>Sipnose</H.Subtitle>
           <H.Small>{movie.overview}</H.Small>
         </H.Content>
+        {!!movie?.production_companies?.length && (
+          <H.Subtitle style={{marginLeft: 20}}>Companies</H.Subtitle>
+        )}
         <H.HorizontalFlatList
           data={movie.production_companies || []}
           keyExtractor={(item) => String(item.id)}

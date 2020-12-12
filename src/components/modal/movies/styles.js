@@ -10,6 +10,7 @@ export const ModalContainer = styled(Modal)`
 
 export const Container = styled.View`
   padding: 0px 20px;
+  padding-top: 20px;
 `;
 
 export const Text = styled(Montserrat)`

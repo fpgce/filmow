@@ -43,6 +43,7 @@ export default {
       light_subtitle: '#FFFFFF',
       footer_modal_rate_background: '#FFFFFF',
       footer_modal_bar_background: '#EBEDF0',
+      background_loading: '#fff5',
     },
   },
   dark: {
@@ -65,6 +66,7 @@ export default {
       light_subtitle: '#A4A6AC',
       footer_modal_rate_background: '#29292B',
       footer_modal_bar_background: '#202022',
+      background_loading: '#1117',
     },
   },
 };

@@ -55,7 +55,7 @@ const InputSearchComponent = (props) => {
 };
 
 InputSearchComponent.propTypes = {
-  focused: PropTypes.bool,
+  focused: PropTypes.bool.isRequired,
   callbackSearch: PropTypes.func.isRequired,
 };
 
