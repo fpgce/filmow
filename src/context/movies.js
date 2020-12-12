@@ -69,7 +69,6 @@ function toggleTagSelected(tag, set, get) {
     set((state) => {
       let tags = [...state.selectedTags];
       const index = state.selectedTags.indexOf(tag);
-      console.log(index);
       if (index < 0) {
         tags.push(tag);
       } else {

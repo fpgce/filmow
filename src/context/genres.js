@@ -9,7 +9,7 @@ async function updateLocalState(get) {
     const state = get();
     await setStorageState({context: 'genres', state});
   } catch (err) {
-    console.log(`FAIL updateLocalState`, err);
+    console.log(`FAIL updateLocalState genres`, err);
   }
 }
 
@@ -43,16 +43,16 @@ function toggleActiveGenre(set, genre) {
   } catch (error) {}
 }
 
-async function init(set) {
+async function init(set, get) {
   try {
     const state = await getStorageState({context: 'genres'});
     if (state && state?.genres.length) {
       set((st) => ({...st, ...state, loading: false, error: false}));
     } else {
-      requestGenres(set);
+      requestGenres(set, get);
     }
   } catch (err) {
-    requestGenres(set);
+    requestGenres(set, get);
     console.log(`FAIL updateLocalState`, err);
   }
 }
@@ -61,7 +61,7 @@ const useGenres = create((set, get) => ({
   genres: [],
   loading: false,
   error: false,
-  init: init(set),
+  init: init(set, get),
   requestGenres: () => requestGenres(set, get),
   toggleActiveGenre: (genre) => toggleActiveGenre(set, genre),
 }));

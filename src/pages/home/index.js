@@ -28,7 +28,6 @@ const HomeScreen = ({navigation}) => {
     error,
     movies,
   } = useMovies();
-  console.log(selectedTags);
 
   useEffect(() => {
     init();
