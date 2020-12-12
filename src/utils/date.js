@@ -8,12 +8,11 @@ export function getOnlyYear(date) {
 
 export function getFormatedRuntime(secondsToAdd) {
   try {
-    const date = new Date('2020-10-10T02:00:00');
-    date.setSeconds(secondsToAdd * 60);
-    const seconds = date.getSeconds();
+    const date = new Date('2020-10-10T03:00:00');
+    date.setMinutes(secondsToAdd);
     const minutes = date.getMinutes();
     const hours = date.getHours();
-    return `${hours}h${minutes}m${seconds}s`;
+    return `${hours}h${minutes}m`;
   } catch (error) {
     return '';
   }
