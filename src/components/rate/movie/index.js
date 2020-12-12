@@ -6,6 +6,7 @@ import StarSourceImage from '~/assets/png/star.png';
 import StarCleanSourceImage from '~/assets/png/star_clean.png';
 
 import * as R from './styles';
+import PropTypes from 'prop-types';
 
 const RateMovieComponent = ({movie}) => {
   const theme = useTheme();
@@ -29,6 +30,17 @@ const RateMovieComponent = ({movie}) => {
       </R.Button>
     </R.Container>
   );
+};
+
+RateMovieComponent.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    vote_count: PropTypes.number,
+  }).isRequired,
 };
 
 export default memo(RateMovieComponent);

@@ -7,7 +7,14 @@ import RateStartsComponent from '~/components/rate/stars';
 import useRate from '~/context/rate';
 
 const ModalMoviesComponent = () => {
-  const {success, modalOpen, sendARate, loading, toggleModal} = useRate();
+  const {
+    movie,
+    success,
+    modalOpen,
+    sendARate,
+    loading,
+    toggleModal,
+  } = useRate();
   const [rate, setRate] = useState(0);
 
   const handleSendRate = useCallback(() => {
@@ -22,9 +29,10 @@ const ModalMoviesComponent = () => {
       animationType="slide"
       visible={modalOpen}>
       <M.Container>
+        <M.FullButton onPress={toggleModal} />
         <M.FooterBox>
           <M.CloseBar onPress={toggleModal} />
-          <M.Title>Avalie Power</M.Title>
+          <M.Title>Avalie {movie?.title}</M.Title>
           <M.Subtitle>ajute os outros usuários a ver bons filmes</M.Subtitle>
           <RateStartsComponent callbackSelected={setRate} />
           <PrimaryButton

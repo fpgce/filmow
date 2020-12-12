@@ -8,6 +8,12 @@ export const ModalContainer = styled(Modal)`
   margin: 0px;
 `;
 
+export const FullButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})`
+  flex: 1;
+`;
+
 export const Container = styled.View`
   flex: 1;
   background-color: #0005;

@@ -4,9 +4,9 @@ import {View, Image, Text} from 'react-native';
 import * as A from './styles';
 
 import env from '~/config/environments';
+import PropTypes from 'prop-types';
 
 const ArtiscItemComponent = ({item}) => {
-  console.log(item);
   return (
     <A.Container>
       <A.Thumb
@@ -18,6 +18,14 @@ const ArtiscItemComponent = ({item}) => {
       <A.Small>{item.origin_country}</A.Small>
     </A.Container>
   );
+};
+
+ArtiscItemComponent.propTypes = {
+  item: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    origin_country: PropTypes.string,
+    logo_path: PropTypes.string,
+  }).isRequired,
 };
 
 export default ArtiscItemComponent;

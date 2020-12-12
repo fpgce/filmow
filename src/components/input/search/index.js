@@ -4,6 +4,7 @@ import React, {useState, useRef, useEffect, memo, useCallback} from 'react';
 import SearchIcon from '~/assets/svgIcon/search';
 import {useTheme} from 'styled-components/native';
 import * as I from './styles';
+import PropTypes from 'prop-types';
 
 const InputSearchComponent = (props) => {
   const theme = useTheme();
@@ -16,7 +17,7 @@ const InputSearchComponent = (props) => {
 
   function updateText(text) {
     setState((s) => ({...s, inputText: text}));
-    props?.callbackSearch(text);
+    props.callbackSearch(text);
   }
 
   useEffect(() => {
@@ -51,6 +52,11 @@ const InputSearchComponent = (props) => {
       </I.Row>
     </I.Container>
   );
+};
+
+InputSearchComponent.propTypes = {
+  focused: PropTypes.bool,
+  callbackSearch: PropTypes.func.isRequired,
 };
 
 export default memo(InputSearchComponent);

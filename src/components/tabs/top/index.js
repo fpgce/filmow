@@ -44,23 +44,6 @@ const TopTabNavigator = () => {
       )}
     />
   );
-
-  //   return (
-  //     <T.HorizontalScroll horizontal>
-  //       <T.Button onPress={() => updateIndex(0)}>
-  //         <T.Text>Populares</T.Text>
-  //         <T.BottonLine active={currentTabIndex === 0} />
-  //       </T.Button>
-  //       <T.Button onPress={() => updateIndex(1)}>
-  //         <T.Text>Em cartaz</T.Text>
-  //         <T.BottonLine active={currentTabIndex === 1} />
-  //       </T.Button>
-  //       <T.Button onPress={() => updateIndex(2)}>
-  //         <T.Text>Minha lista</T.Text>
-  //         <T.BottonLine active={currentTabIndex === 2} />
-  //       </T.Button>
-  //     </T.HorizontalScroll>
-  //   );
 };
 
 export default TopTabNavigator;

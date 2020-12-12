@@ -4,6 +4,7 @@ import StarIcon from '~/assets/svgIcon/star';
 import {useTheme} from 'styled-components';
 
 import * as S from './styles';
+import PropTypes from 'prop-types';
 
 const StartComponent = ({callbackSelected}) => {
   const theme = useTheme();
@@ -27,6 +28,10 @@ const StartComponent = ({callbackSelected}) => {
   }, [theme, count, callbackSelected]);
 
   return <S.Container>{renderButtons}</S.Container>;
+};
+
+StartComponent.propTypes = {
+  callbackSelected: PropTypes.func.isRequired,
 };
 
 export default StartComponent;

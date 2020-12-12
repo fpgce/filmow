@@ -46,9 +46,9 @@ const MovieDetailScreen = ({route}) => {
                 movie.runtime ? getFormatedRuntime(movie.runtime) : ''
               }`}</H.Small>
             </H.View>
-            <H.ButtonSquare>
+            {/* <H.ButtonSquare>
               <H.Plus source={PlusSourceImage} />
-            </H.ButtonSquare>
+            </H.ButtonSquare> */}
           </H.RowHeader>
           <H.RowCategory>
             {movie?.genres?.map((tag) => (
