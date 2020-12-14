@@ -23,11 +23,4 @@ target 'filmow' do
   end
 end
 
-target 'filmow-tvOS' do
-  # Pods for filmow-tvOS
 
-  target 'filmow-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end

@@ -19,15 +19,7 @@ import useGenres from '~/context/genres';
 const HomeScreen = ({navigation}) => {
   const theme = useTheme();
   const {genres, toggleActiveGenre} = useGenres();
-  const {
-    init,
-    toggleModal,
-    selectedTags,
-    toggleTagSelected,
-    loading,
-    error,
-    movies,
-  } = useMovies();
+  const {init, toggleModal, movies} = useMovies();
 
   useEffect(() => {
     init();

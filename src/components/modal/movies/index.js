@@ -4,6 +4,8 @@ import * as M from './styles';
 
 import CloseIcon from '~/assets/svgIcon/close';
 
+import {useTheme} from 'styled-components/native';
+
 import InputSearchComponent from '~/components/input/search';
 import MovieSmallItemComponent from '~/components/item/moviesmall';
 import SafeArea from '~/components/safe/default';
@@ -14,6 +16,8 @@ import {requestSearchAMovie} from '~/services/api/movies';
 import {navigate} from '~/services/navigation/ref';
 
 const ModalMoviesComponent = () => {
+  const theme = useTheme();
+
   const {modalSearchOpen, toggleModal, recents, setRecents} = useMovies();
 
   const [state, setState] = useState({
@@ -61,7 +65,7 @@ const ModalMoviesComponent = () => {
       <SafeArea>
         <M.Container>
           <M.Button onPress={toggleModal}>
-            <CloseIcon stroke="#000" />
+            <CloseIcon stroke={theme.color.dark_dark} />
           </M.Button>
           <InputSearchComponent
             autocapitalize="none"

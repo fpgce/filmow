@@ -11,7 +11,7 @@ export const ContainerBanner = styled.TouchableOpacity.attrs({
 export const BannerImage = styled.Image`
   width: 100%;
   height: ${({theme}) => theme.window.height * 0.5}px;
-  border-radius: 30px;
+  border-radius: 50px;
 `;
 
 export const CardInfo = styled.View`
